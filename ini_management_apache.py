@@ -93,7 +93,7 @@ class help(object):
 	@staticmethod
 	#- @translate.[option](init('nameTranslate')) -> initializes the translation file
 	def info(translate):
-		return 'Management Apache'
+		return 'This module is created to manage apache from creating domains to advanced system settings'
 
 	@staticmethod
 	#- Especificamos si necesita el modulo paquetes adicionales.
