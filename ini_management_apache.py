@@ -15,12 +15,6 @@
 # Facebook: https://www.facebook.com/pages/Admin-Server/795147837179555?fref=ts
 # Twitter: https://twitter.com/4dminserver
 
-#- imports necessary
-import sys, os
-sys.path.append('modules/management_apache/model')
-from management import management
-from generate import generate
-
 class add(object):
 
 	#- @output.[option](default, error)(text) -> printed by stdout
@@ -29,6 +23,11 @@ class add(object):
 	#- @installer -> module for install dependencies -> nonoperating
 
 	def __init__(self, output, translate, log, installer, options):
+		#- imports necessary
+		import sys, os
+		sys.path.append('modules/management_apache/model')
+		from management import management
+		from generate import generate
 		#- Operations
 		#- Example:
 		interpret = translate.init('management_apache', 'modules/management_apache/locale')
@@ -127,5 +126,5 @@ class help(object):
 	#- Especificamos si necesita el modulo paquetes adicionales.
 	def package():
 		#- List of extra dependencies needed by the module
-		addtionalPackage = []
+		additionalPackage = ["sqlite3"]
 		return additionalPackage
