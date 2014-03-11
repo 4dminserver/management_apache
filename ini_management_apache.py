@@ -16,7 +16,7 @@
 # Twitter: https://twitter.com/4dminserver
 
 #- imports necessary
-import sys
+import sys, os
 sys.path.append('modules/management_apache/model')
 from management import management
 from generate import generate
@@ -28,7 +28,7 @@ class add(object):
 	#- @log.[option](write)(text,*1) -> 1 is error -> saves information in the logs
 	#- @installer -> module for install dependencies -> nonoperating
 
-	def __init__(self, output, translate, log, installer):
+	def __init__(self, output, translate, log, installer, options):
 		#- Operations
 		#- Example:
 		interpret = translate.init('management_apache')
@@ -65,6 +65,7 @@ class add(object):
 
 		control = True
 		while control == True:
+			options.set_completer(help.complete)
 			sentencia = raw_input("apache >> ")
 			if sentencia == '1':
 				option1()
@@ -84,12 +85,37 @@ class add(object):
 			elif sentencia == '6':
 				option6()
 				__menu__()
+			elif sentencia == 'clear':
+				os.system('clear')
+			elif sentencia == 'help':
+				output.default(help.help())
+			elif sentencia == 'version':
+				output.default(help.version())
 			elif sentencia == '0':
+				control = False
+			elif sentencia == 'exit':
 				control = False
 			else:
 				output.default(_('Invalid option'))
 
 class help(object):
+	#- Commands default
+	@staticmethod
+	def complete(text, state):
+		possibilities = ["exit", "clear", "help", "version"]
+		results = [x for x in possibilities if x.startswith(text)] + [None]
+		return results[state]
+	
+	#- Help for menu
+	@staticmethod
+	def help(translate=''):
+		return "Help Module"
+
+	#-Info version
+	@staticmethod
+	def version(translate=''):
+		return "Management_Apache Version 0.1"
+
 	@staticmethod
 	#- @translate.[option](init('nameTranslate')) -> initializes the translation file
 	def info(translate):
