@@ -31,7 +31,7 @@ class add(object):
 	def __init__(self, output, translate, log, installer, options):
 		#- Operations
 		#- Example:
-		interpret = translate.init('management_apache')
+		interpret = translate.init('management_apache', 'modules/management_apache/locale')
 		_ = interpret.ugettext
 		output.default(_('Management Apache'))
 		def __menu__():
