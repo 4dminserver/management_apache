@@ -85,6 +85,8 @@ class add(object):
 			elif sentencia == '6':
 				option6()
 				__menu__()
+			elif sentencia == 'menu':
+				__menu__()
 			elif sentencia == 'clear':
 				os.system('clear')
 			elif sentencia == 'help':
@@ -102,7 +104,7 @@ class help(object):
 	#- Commands default
 	@staticmethod
 	def complete(text, state):
-		possibilities = ["exit", "clear", "help", "version"]
+		possibilities = ["exit", "clear", "help", "version", "menu"]
 		results = [x for x in possibilities if x.startswith(text)] + [None]
 		return results[state]
 	
