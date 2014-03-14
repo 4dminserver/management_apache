@@ -191,7 +191,7 @@ class management(object):
 	@staticmethod
 	def reload_service(translate, output, log):
 		_ = translate
-		output.default(color('magenta',_('Restarting Service...')))
+		output.default(color('magenta',_('Restarting Service...') + 'Apache'))
 		command_restart = '/etc/init.d/apache2 reload'
 		restart = subprocess.Popen(command_restart, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 		restart_error = restart.stderr.read()
