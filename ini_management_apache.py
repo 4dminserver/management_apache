@@ -93,9 +93,9 @@ class add(object):
 			elif sentencia == 'version':
 				output.default(help.version())
 			elif sentencia == '0':
-				control = False
+				sys.exit()
 			elif sentencia == 'exit':
-				control = False
+				sys.exit()
 			else:
 				output.default(_('Invalid option'))
 
